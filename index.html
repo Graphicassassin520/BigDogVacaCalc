@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vacation Cost Calculator</h1>
+        <form id="calculatorForm" onsubmit="calculateCosts(); return false;">
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="number" id="days" placeholder="Number of vacation days">
+            <input type="number" id="costPerNight" placeholder="Cost per night">
+            <input type="number" id="foodPerDay" placeholder="Daily food cost">
+            <input type="number" id="entertainmentPerDay" placeholder="Daily entertainment cost">
+            <input type="number" id="inflationRate" placeholder="Enter annual inflation rate" step="0.1">
+            <input type="number" id="spinnakerPrice" placeholder="Spinnaker Price"> <!-- New input field -->
+            <button type="submit">Calculate Costs</button>
+        </form>
+        <button onclick="window.print()">Print Results</button>
+        <div id="result"></div>
+        <div class="signatures">
+            <p>X <span class="signature-line"></span></p>
+            <p>X <span class="signature-line"></span></p>
+            <p>X <span class="signature-line"></span></p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

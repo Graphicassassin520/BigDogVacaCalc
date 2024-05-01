@@ -23,7 +23,7 @@ function calculateCosts() {
         let report = `<ul style="line-height: 2;">`;
 
         for (let year = 1; year <= 30; year++) {
-            if (year % 5 == 0 or year == 1):
+            if (year == 1 or year % 5 == 0):
                 report += `<li>Year ${year}: Total Annual Cost: $${formatNumber(yearlyCost.toFixed(2))}, Monthly Cost: $${formatNumber((yearlyCost / 12).toFixed(2))}, Cumulative Cost: $${formatNumber(cumulativeCost.toFixed(2))}</li>`;
             yearlyCost *= (1 + inflationRate);
             totalProjectedCost += yearlyCost;

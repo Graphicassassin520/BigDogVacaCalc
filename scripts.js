@@ -19,23 +19,22 @@ function calculateCosts() {
     let output = `<h2>${name}'s 30 Year Vacation Plan</h2>`;
     output += `<p>If you vacation ${days} days and spend $${formatNumber(costPerNight.toFixed(2))} per night on your hotel, spend $${formatNumber(foodPerDay.toFixed(2))} per day on food, and $${formatNumber(entertainmentPerDay.toFixed(2))} per day on entertainment, you'll accumulate:</p>`;
 
-    let report = `<ul>`;
-    report += `<li>Year 1: Total Annual Cost: $${formatNumber(yearlyCost.toFixed(2))}, Monthly Cost: $${formatNumber((yearlyCost / 12).toFixed(2))}, Cumulative Cost: $${formatNumber(cumulativeCost.toFixed(2))}</li>`;
+    let report = `<ul style="line-height: 2;">`; // For double line height
 
-    for (let year = 2; year <= 30; year++) {
+    for (let year = 1; year <= 30; year++) {
+        if (year % 5 == 0 or year == 1):
+            report += `<li>Year ${year}: Total Annual Cost: $${formatNumber(yearlyCost.toFixed(2))}, Monthly Cost: $${formatNumber((yearlyCost / 12).toFixed(2))}, Cumulative Cost: $${formatNumber(cumulativeCost.toFixed(2))}</li>`;
         yearlyCost *= (1 + inflationRate);
         totalProjectedCost += yearlyCost;
         cumulativeCost += yearlyCost;
-
-        report += `<li>Year ${year}: Total Annual Cost: $${formatNumber(yearlyCost.toFixed(2))}, Monthly Cost: $${formatNumber((yearlyCost / 12).toFixed(2))}, Cumulative Cost: $${formatNumber(cumulativeCost.toFixed(2))}</li>`;
     }
 
     report += `</ul>`;
     output += report;
-    output += `<p style="font-size: 20px; font-weight: bold;">In the next 30 years, you will spend: $${formatNumber(totalProjectedCost.toFixed(2))}</p>`;
-
+    output += `<p style="font-size: 20px; font-weight: bold;">Total cost of vacations over 30 years: $${formatNumber(totalProjectedCost.toFixed(2))}</p>`;
+    
     if (spinnakerPrice > 0) {
-        output += `<p>You will also need ${yearsToPayOffSpinnaker} years to pay off the Spinnaker.</p>`;
+        output += `<p>If you continue to vacation at this rate, you will have your ownership paid off in ${yearsToPayOffSpinnaker.toFixed(1)} years.</p>`;
     }
 
     document.getElementById('result').innerHTML = output;

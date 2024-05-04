@@ -1,3 +1,4 @@
+/* General Styles */
 body, html {
     height: 100%;
     margin: 0;
@@ -5,37 +6,47 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Georgia', serif;
-    background-color: #f4f4f9; /* A soft off-white background */
-    color: #5a5a5a; /* Soft, dark gray text */
+    font-family: 'Georgia', serif; /* Use a classic font for a luxurious feel */
+    background-color: #f4f4f9; /* Soft background color */
+    color: #333; /* Dark gray for text for better readability */
 }
 
 .container {
     width: 80%;
     max-width: 600px;
     padding: 20px;
-    background: linear-gradient(to bottom, #ffffff 0%, #f2f2f7 100%);
-    border-radius: 8px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* Pure white background */
+    border-radius: 10px; /* Rounded corners for a smooth look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     text-align: center;
-    border: 1px solid #dcdcdc; /* Subtle border */
+    border: 1px solid #dcdcdc; /* Light border for subtle definition */
 }
 
+/* Logo Styling */
+#brandLogo {
+    display: block;
+    max-width: 180px; /* Suitable maximum width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto 20px; /* Center align and provide spacing below */
+}
+
+/* Input fields styling */
 input[type="text"], input[type="number"] {
-    width: 90%;
+    width: calc(100% - 20px); /* Full width minus padding */
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc; /* Slightly thicker border for focus */
     background-color: #fff;
     color: #333;
     font-family: 'Arial', sans-serif;
 }
 
+/* Button styling */
 button {
-    background-color: #b59f7b; /* A gold-brown color for luxury */
-    color: #fff;
-    padding: 12px 24px;
+    background-color: #4a5568; /* Deep gray-blue for a sophisticated look */
+    color: #ffffff;
+    padding: 12px 20px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
@@ -44,17 +55,33 @@ button {
 }
 
 button:hover {
-    background-color: #9c8468; /* A darker shade for the button on hover */
+    background-color: #2d3748; /* Darker shade on hover */
 }
 
+/* Print-specific Styles */
 @media print {
-    body, .container, button, form {
-        display: none;
-    }
-    #result {
-        display: block;
-        visibility: visible;
+    body, html {
+        background-color: white;
         color: black;
-        font-size: 14px;
+    }
+
+    .container {
+        box-shadow: none;
+        border: none;
+        width: auto; /* Fit to the width of the print page */
+    }
+
+    #brandLogo, #result {
+        display: block;
+    }
+
+    input, button {
+        display: none; /* Hide all form elements and buttons */
+    }
+
+    #result {
+        visibility: visible;
+        color: black; /* Ensure text is black for printing */
+        font-size: 12pt; /* Larger font for readability */
     }
 }

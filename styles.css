@@ -6,32 +6,32 @@ body, html {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #007bff; /* Blue background for aesthetic contrast */
-    color: white; /* White text color for visibility */
+    background-color: #007bff; /* Blue background */
+    color: white;
 }
 
 .container {
     width: 90%;
-    max-width: 600px; /* Optimized width for both mobile and desktop views */
+    max-width: 600px;
     padding: 20px;
-    background-color: #333; /* Dark background for readability */
+    background-color: #333;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
-    text-align: center; /* Center-align text for better presentation */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 input[type="text"], input[type="number"], button {
-    width: 100%; /* Full width */
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px; /* Space between inputs */
+    margin-bottom: 10px;
     border-radius: 5px;
     border: none;
-    background-color: #fff; /* White background for inputs */
-    color: #333; /* Dark text for contrast */
+    background-color: #fff;
+    color: #333;
 }
 
 button {
-    background-color: #28a745; /* Green background for actions */
+    background-color: #28a745;
     color: white;
     cursor: pointer;
 }
@@ -46,6 +46,9 @@ button:hover {
         color: black;
     }
     .container, button {
-        display: none; /* Hide unnecessary elements for printing */
+        display: none;
+    }
+    #result {
+        visibility: visible;
     }
 }

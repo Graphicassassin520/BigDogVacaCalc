@@ -5,57 +5,56 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    background-color: #007bff; /* Blue background */
-    color: white;
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f9; /* A soft off-white background */
+    color: #5a5a5a; /* Soft, dark gray text */
 }
 
 .container {
-    width: 90%;
+    width: 80%;
     max-width: 600px;
     padding: 20px;
-    background-color: #333;
+    background: linear-gradient(to bottom, #ffffff 0%, #f2f2f7 100%);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
-    box-sizing: border-box; /* Include padding in width calculation */
+    border: 1px solid #dcdcdc; /* Subtle border */
 }
 
-input[type="text"], input[type="number"], button {
-    width: 100%;
+input[type="text"], input[type="number"] {
+    width: 90%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #ccc;
     background-color: #fff;
     color: #333;
-    box-sizing: border-box; /* Include padding and border in the width calculation */
+    font-family: 'Arial', sans-serif;
 }
 
 button {
-    background-color: #28a745;
-    color: white;
+    background-color: #b59f7b; /* A gold-brown color for luxury */
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    width: auto;  /* Auto width for better control */
-    padding: 10px 20px; /* More padding for better appearance */
+    margin-top: 10px;
 }
 
 button:hover {
-    opacity: 0.8;
+    background-color: #9c8468; /* A darker shade for the button on hover */
 }
 
 @media print {
-    body, html {
-        background-color: white;
-        color: black;
-        height: auto;
-    }
-    .container, input, button {
-        display: none;  /* Hide all elements that should not be printed */
+    body, .container, button, form {
+        display: none;
     }
     #result {
+        display: block;
         visibility: visible;
-        color: black; /* Ensure text is visible */
-        display: block; /* Make sure the result is not hidden */
+        color: black;
+        font-size: 14px;
     }
 }

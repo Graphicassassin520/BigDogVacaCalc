@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacation Calculator</title>
+    <title>Luxurious Vacation Cost Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <img src="https://spinnakerresorts.com/wp-content/uploads/spinnaker-40-years-logo-2023-1.jpg" alt="Spinnaker Resorts Logo" id="brandLogo">
-        <h1>Vacation Calculator</h1>
+        <h1 id="mainTitle">Luxurious Vacation Cost Calculator</h1>
         <form id="calculatorForm">
+            <label for="name">Name:</label>
             <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="days">Vacation days:</label>
             <input type="number" id="days" placeholder="Number of vacation days" required>
+
+            <label for="costPerNight">Cost per night:</label>
             <input type="number" id="costPerNight" placeholder="Cost per night" required>
+
+            <label for="foodPerDay">Daily food cost:</label>
             <input type="number" id="foodPerDay" placeholder="Daily food cost" required>
+
+            <label for="entertainmentPerDay">Entertainment per day:</label>
             <input type="number" id="entertainmentPerDay" placeholder="Daily entertainment cost" required>
+
+            <label for="inflationRate">Inflation rate (%):</label>
             <input type="number" id="inflationRate" placeholder="Annual inflation rate (%)" step="0.1" required>
+
+            <label for="spinnakerPrice">Spinnaker Price:</label>
             <input type="number" id="spinnakerPrice" placeholder="Spinnaker Price" required>
+
             <button type="submit">Calculate Costs</button>
         </form>
         <button onclick="window.print()">Print Results</button>

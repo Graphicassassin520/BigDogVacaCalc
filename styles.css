@@ -1,4 +1,4 @@
-/* General Styles */
+/* General and Screen Display Styles */
 body, html {
     height: 100%;
     margin: 0;
@@ -6,82 +6,82 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Georgia', serif; /* Use a classic font for a luxurious feel */
-    background-color: #f4f4f9; /* Soft background color */
-    color: #333; /* Dark gray for text for better readability */
+    font-family: 'Georgia', serif; /* Elegant and readable serif font */
+    background-color: #f4f4f9; /* Soft, neutral background color */
+    color: #333; /* Dark gray text for contrast and readability */
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     padding: 20px;
-    background: #ffffff; /* Pure white background */
-    border-radius: 10px; /* Rounded corners for a smooth look */
+    background: #ffffff; /* White background for a clean and professional look */
+    border-radius: 10px; /* Smooth rounded corners for a modern feel */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center;
-    border: 1px solid #dcdcdc; /* Light border for subtle definition */
+    text-align: center; /* Central alignment for a tidy appearance */
+    border: 1px solid #dcdcdc; /* Light gray border for subtle definition */
 }
 
-/* Logo Styling */
 #brandLogo {
     display: block;
-    max-width: 180px; /* Suitable maximum width for the logo */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto 20px; /* Center align and provide spacing below */
+    max-width: 180px; /* Optimal width for visibility without overpowering the layout */
+    height: auto; /* Keeps the logo's aspect ratio intact */
+    margin: 0 auto 20px; /* Centers the logo and adds vertical space before the form */
 }
 
-/* Input fields styling */
-input[type="text"], input[type="number"] {
-    width: calc(100% - 20px); /* Full width minus padding */
+input[type="text"], input[type="number"], button {
+    width: calc(100% - 20px); /* Full width minus padding for a snug fit */
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 2px solid #ccc; /* Slightly thicker border for focus */
-    background-color: #fff;
+    border: 2px solid #ccc; /* Enhances focus visibility with a slightly thicker border */
+    background-color: #fff; /* Keeps input fields bright to stand out against the text */
     color: #333;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Sans-serif for clean, modern input text */
 }
 
-/* Button styling */
 button {
-    background-color: #4a5568; /* Deep gray-blue for a sophisticated look */
+    background-color: #4a5568; /* Dark gray-blue for an elegant, professional button */
     color: #ffffff;
     padding: 12px 20px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #2d3748; /* Darker shade on hover */
+    background-color: #2d3748; /* A darker shade for interactive hover effect */
 }
 
-/* Print-specific Styles */
+/* Print Styles */
 @media print {
     body, html {
-        background-color: white;
-        color: black;
+        background-color: white; /* Ensures a clean, distraction-free background */
+        color: black; /* Maximizes contrast for print */
+        font-family: 'Georgia', serif; /* Consistent with the screen font for uniformity */
+        font-size: 14pt; /* Increases size for print readability */
     }
 
     .container {
-        box-shadow: none;
-        border: none;
-        width: auto; /* Fit to the width of the print page */
+        width: 100%; /* Utilizes full page width for a broader print layout */
+        max-width: none; /* Removes constraints to fit all content */
+        box-shadow: none; /* Removes shadows for a clean print look */
+        border: none; /* Eliminates border for printing */
+        text-align: left; /* Aligns text to the left for traditional reading layout */
     }
 
-    #brandLogo, #result {
-        display: block;
+    #brandLogo {
+        display: block; /* Ensures the logo is visible */
+        margin-bottom: 20px; /* Adds space below the logo for separation */
     }
 
     input, button {
-        display: none; /* Hide all form elements and buttons */
+        display: none; /* Hides interactive elements not needed in print */
     }
 
     #result {
-        visibility: visible;
-        color: black; /* Ensure text is black for printing */
-        font-size: 12pt; /* Larger font for readability */
+        display: block; /* Ensures result section is visible */
+        visibility: visible; /* Overrides any hidden settings from screen styles */
     }
 }

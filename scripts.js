@@ -1,6 +1,7 @@
 document.getElementById('calculatorForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent default form submission
+    event.preventDefault();  // Prevent the form from submitting in the traditional way
     calculateCosts();
+    updatePrintTitle();
 });
 
 function calculateCosts() {
@@ -12,26 +13,33 @@ function calculateCosts() {
     const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
     const spinnakerPrice = parseFloat(document.getElementById('spinnakerPrice').value) || 0;
 
-    let initialYearlyCost = days * (costPerNight + foodPerDay + entertainmentPerDay);
-    let cumulativeCost = initialYearlyCost;
+    let yearlyCost = days * (costPerNight + foodPerDay + entertainmentPerDay);
+    let totalProjectedCost = yearlyCost;
 
-    let report = `<h2>${name}'s Detailed Vacation Costs Over 30 Years</h2>`;
-    report += `<p>Starting with an annual vacation cost of $${initialYearlyCost.toFixed(2)}, considering an inflation rate of ${(inflationRate * 100).toFixed(1)}%, here are the details:</p><ul>`;
-
-    for (let year = 1; year <= 30; year++) {
-        if (year === 1 || year % 5 === 0) {
-            let yearlyCost = initialYearlyCost * Math.pow(1 + inflationRate, year - 1);
-            let monthlyCost = yearlyCost / 12;
-            cumulativeCost += yearlyCost;
-            report += `<li>Year ${year}: Annual Cost: $${yearlyCost.toFixed(2)}, Monthly Cost: $${monthlyCost.toFixed(2)}, Cumulative Cost: $${cumulativeCost.toFixed(2)}</li>`;
-        }
+    // Apply inflation rate
+    for (let year = 2; year <= 30; year++) {
+        yearlyCost *= (1 + inflationRate);
+        totalProjectedCost += yearlyCost;
     }
 
-    report += `</ul>`;
-    let yearsToPayOffSpinnaker = spinnakerPrice / cumulativeCost * 30;
-    report += `<p>Total cost over 30 years: $${cumulativeCost.toFixed(2)}</p>`;
-    report += `<p>If you continue to vacation at this rate, you will have your Spinnaker ownership paid off in ${yearsToPayOffSpinnaker.toFixed(1)} years.</p>`;
+    // Display results
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<h2>${name}'s 30-Year Vacation Cost Projection</h2>
+                           <p>Calculating costs for ${days} days per year with inflation rate of ${(inflationRate * 100).toFixed(2)}%:</p>
+                           <ul>
+                             <li>Annual cost in the first year: $${yearlyCost.toFixed(2)}</li>
+                             <li>Total cost over 30 years: $${totalProjectedCost.toFixed(2)}</li>
+                           </ul>`;
 
-    document.getElementById('result').innerHTML = report;
+    if (spinnakerPrice > 0) {
+        const yearsToPayOff = spinnakerPrice / totalProjectedCost * 30;
+        resultDiv.innerHTML += `<p>If you maintain these vacation habits, you will pay off your Spinnaker ownership in approximately ${yearsToPayOff.toFixed(1)} years.</p>`;
+    }
 }
 
+function updatePrintTitle() {
+    const name = document.getElementById('name').value.trim() || 'Guest';
+    const printTitle = document.getElementById('printTitle');
+    printTitle.style.display = 'block'; // Make sure the print title is visible when printing
+    printTitle.textContent = `${name}'s Vacation Plan`; // Update the title dynamically based on the user's input
+}

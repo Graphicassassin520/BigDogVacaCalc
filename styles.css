@@ -18,6 +18,7 @@ body, html {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 input[type="text"], input[type="number"], button {
@@ -28,12 +29,15 @@ input[type="text"], input[type="number"], button {
     border: none;
     background-color: #fff;
     color: #333;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
 }
 
 button {
     background-color: #28a745;
     color: white;
     cursor: pointer;
+    width: auto;  /* Auto width for better control */
+    padding: 10px 20px; /* More padding for better appearance */
 }
 
 button:hover {
@@ -44,11 +48,14 @@ button:hover {
     body, html {
         background-color: white;
         color: black;
+        height: auto;
     }
-    .container, button {
-        display: none;
+    .container, input, button {
+        display: none;  /* Hide all elements that should not be printed */
     }
     #result {
         visibility: visible;
+        color: black; /* Ensure text is visible */
+        display: block; /* Make sure the result is not hidden */
     }
 }

@@ -6,82 +6,81 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Georgia', serif; /* Use a classic font for a luxurious feel */
-    background-color: #f4f4f9; /* Soft background color */
-    color: #333; /* Dark gray for text for better readability */
+    font-family: 'Georgia', serif; /* Classic and elegant serif font */
+    background-color: #f4f4f9;
+    color: #333;
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 700px;
     padding: 20px;
-    background: #ffffff; /* Pure white background */
-    border-radius: 10px; /* Rounded corners for a smooth look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center;
-    border: 1px solid #dcdcdc; /* Light border for subtle definition */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dcdcdc;
+    text-align: left;
 }
 
-/* Logo Styling */
 #brandLogo {
     display: block;
-    max-width: 180px; /* Suitable maximum width for the logo */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto 20px; /* Center align and provide spacing below */
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 20px;
 }
 
-/* Input fields styling */
 input[type="text"], input[type="number"] {
-    width: calc(100% - 20px); /* Full width minus padding */
+    width: calc(100% - 40px);
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border-radius: 5px;
-    border: 2px solid #ccc; /* Slightly thicker border for focus */
+    border: 2px solid #ccc;
     background-color: #fff;
     color: #333;
     font-family: 'Arial', sans-serif;
 }
 
-/* Button styling */
-button {
-    background-color: #4a5568; /* Deep gray-blue for a sophisticated look */
-    color: #ffffff;
+.btn {
+    background-color: #4a5568;
+    color: #fff;
     padding: 12px 20px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    display: block; /* Make buttons block level to fill the container width */
+    width: 100%;
+    margin-top: 10px; /* Space between buttons and other elements */
 }
 
-button:hover {
-    background-color: #2d3748; /* Darker shade on hover */
+.btn-print {
+    margin-top: 20px; /* Additional space above the print button */
 }
 
-/* Print-specific Styles */
+.btn:hover {
+    background-color: #2d3748;
+}
+
 @media print {
     body, html {
         background-color: white;
         color: black;
+        font-size: 16pt;
     }
 
     .container {
         box-shadow: none;
         border: none;
-        width: auto; /* Fit to the width of the print page */
+        width: 100%;
     }
 
-    #brandLogo, #result {
-        display: block;
-    }
-
-    input, button {
-        display: none; /* Hide all form elements and buttons */
+    #brandLogo, form, .btn {
+        display: none;
     }
 
     #result {
+        display: block;
         visibility: visible;
-        color: black; /* Ensure text is black for printing */
-        font-size: 12pt; /* Larger font for readability */
+        text-align: left;
     }
 }

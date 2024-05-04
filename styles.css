@@ -56,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #2d3748; /* Darker shade for hover effect */
+    background-color: #2d3748; /* Darker shade on hover for interactive feel */
 }
 
 @media print {
@@ -66,19 +66,26 @@ button:hover {
     }
 
     .container {
-        width: 100%;
+        width: 100%; 
         box-shadow: none;
         border: none;
+        text-align: left;
     }
 
-    #brandLogo, form, button {
-        display: none; /* Hide unnecessary elements during printing */
+    #mainTitle {
+        display: none; /* Hide the 'Luxurious Vacation Cost Calculator' text */
+    }
+
+    #brandLogo {
+        display: block; /* Ensure the logo is visible */
+    }
+
+    form, button {
+        display: none; /* Hide form inputs and buttons */
     }
 
     #result {
         display: block;
         visibility: visible;
-        text-align: left; /* Left-aligned text for readability in print */
-        font-size: 14pt; /* Larger text for easy reading */
     }
 }

@@ -6,26 +6,20 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Georgia', serif; /* Classic and elegant serif font for a luxurious feel */
-    background-color: #f4f4f9; /* Soft, light background for a clean aesthetic */
-    color: #333; /* Dark gray text for readability */
+    font-family: 'Georgia', serif; /* Elegant serif font for a luxurious feel */
+    background-color: #f4f4f9; /* Light background color for a clean look */
+    color: #333; /* Dark text for readability */
 }
 
 .container {
     width: 90%;
-    max-width: 700px;
+    max-width: 700px; /* Maximum width for the container */
     padding: 20px;
-    background: #ffffff; /* Crisp white background for clear content presentation */
-    border-radius: 10px; /* Smooth rounded corners */
+    background: #ffffff; /* White background for clarity */
+    border-radius: 10px; /* Rounded corners for a modern look */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Central alignment for content */
     border: 1px solid #dcdcdc; /* Light grey border for subtle definition */
-    text-align: left; /* Aligns text to the left for body content, ensuring readability */
-}
-
-#mainTitle {
-    text-align: center; /* Centers the main title text */
-    font-size: 24px; /* Larger font size for the title to draw attention */
-    margin-bottom: 20px; /* Extra space below the title */
 }
 
 #brandLogo {
@@ -35,20 +29,20 @@ body, html {
     margin: 0 auto 20px; /* Center logo and provide spacing */
 }
 
-input[type="text"], input[type="number"], button {
-    width: calc(100% - 40px); /* Adjust width for padding */
+input[type="text"], input[type="number"] {
+    width: calc(100% - 40px); /* Account for padding in width calculation */
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 2px solid #ccc; /* Enhances visibility and focus */
+    border: 2px solid #ccc; /* Slightly thicker border for aesthetic */
     background-color: #fff; /* White background for inputs */
     color: #333;
-    font-family: 'Arial', sans-serif; /* Clear and modern font for inputs */
+    font-family: 'Arial', sans-serif; /* Sans-serif font for input text */
 }
 
 button {
-    background-color: #4a5568; /* Stylish dark blue for a professional look */
-    color: #fff;
+    background-color: #4a5568; /* Stylish dark blue for buttons */
+    color: #fff; /* White text for contrast */
     padding: 12px 20px;
     font-size: 16px;
     border: none;
@@ -63,34 +57,11 @@ button:hover {
 /* Print Styles */
 @media print {
     body, html {
-        background-color: white; /* Clean background for printing */
-        color: black; /* High contrast for print readability */
-        font-size: 16pt; /* Increased font size for printed text */
+        background-color: white;
+        color: black;
+        font-size: 14pt; /* Larger font size for print */
     }
 
     .container {
-        width: 100%; /* Full width for print layout */
-        box-shadow: none; /* Remove shadow for a clean print look */
-        border: none; /* Remove border for printing */
-    }
-
-    #mainTitle, #brandLogo {
-        display: block; /* Ensures these elements are visible in print */
-        text-align: center; /* Ensure title and logo are centered in print */
-    }
-
-    #brandLogo, form, button {
-        display: none; /* Hide elements not needed in print */
-    }
-
-    #printTitle {
-        display: block; /* Show the custom print title */
-        text-align: center; /* Center the print title */
-    }
-
-    #result {
-        display: block;
-        visibility: visible;
-        text-align: left; /* Keep detailed results aligned to the left */
-    }
-}
+        width: 100%;
+        max-width: none

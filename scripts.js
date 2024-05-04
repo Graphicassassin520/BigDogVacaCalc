@@ -12,27 +12,35 @@ function calculateCosts() {
     const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100; // Convert percentage to decimal
     const spinnakerPrice = parseFloat(document.getElementById('spinnakerPrice').value) || 0;
 
-    let yearlyCost = (costPerNight + foodPerDay + entertainmentPerDay) * days;
-    let totalCost = yearlyCost;
-    let cumulativeCost = yearlyCost;
+    let initialYearlyCost = (costPerNight + foodPerDay + entertainmentPerDay) * days;
+    let cumulativeCost = 0;
+    let runningTotal = 0;
 
     let report = `<h2>${name}'s Vacation Costs Over Time</h2>`;
+    report += `<p>If you vacation ${days} days and spend $${formatNumber(costPerNight)} per night on your hotel, spend $${formatNumber(foodPerDay)} per day on food, and $${formatNumber(entertainmentPerDay)} per day on entertainment, over the next 30 years you will spend:</p>`;
     report += `<ul>`;
-    report += `<li>Year 1: $${yearlyCost.toFixed(2)}</li>`;
 
-    for (let year = 5; year <= 30; year += 5) {
-        let yearlyIncrease = yearlyCost * Math.pow((1 + inflationRate), 5);
-        cumulativeCost += yearlyIncrease;
-        report += `<li>Year ${year}: $${yearlyIncrease.toFixed(2)}</li>`;
+    for (let year = 1; year <= 30; year++) {
+        let annualCost = initialYearlyCost * Math.pow((1 + inflationRate), year - 1);
+        let monthlyCost = annualCost / 12;
+        runningTotal += annualCost;
+
+        if (year % 5 === 0 || year === 1) {
+            report += `<li>Year ${year}: Annual Cost: $${formatNumber(annualCost)}, Monthly Cost: $${formatNumber(monthlyCost)}, Cumulative Total: $${formatNumber(runningTotal)}</li>`;
+        }
     }
 
     report += `</ul>`;
-    report += `<p>Total cost over 30 years: $${cumulativeCost.toFixed(2)}</p>`;
+    report += `<p>Total cost over 30 years: $${formatNumber(runningTotal)}</p>`;
 
+    let yearsToPayOffSpinnaker = spinnakerPrice / runningTotal * 30;
     if (spinnakerPrice > 0) {
-        let yearsToPayOff = spinnakerPrice / cumulativeCost * 30;
-        report += `<p>If you continue to vacation at this rate, you will have your Spinnaker ownership paid off in ${yearsToPayOff.toFixed(1)} years.</p>`;
+        report += `<p>If you continue to vacation at this rate, you will have your Spinnaker ownership paid off in ${yearsToPayOffSpinnaker.toFixed(1)} years.</p>`;
     }
 
     document.getElementById('result').innerHTML = report;
+}
+
+function formatNumber(num) {
+    return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }

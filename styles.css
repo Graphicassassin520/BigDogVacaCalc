@@ -8,7 +8,7 @@ body, html {
     align-items: center;
     font-family: 'Georgia', serif; /* Classic and elegant serif font for a luxurious feel */
     background-color: #f4f4f9; /* Soft, light background for a clean aesthetic */
-    color: #333; /* Dark grey for contrast and readability */
+    color: #333; /* Dark gray text for readability */
 }
 
 .container {
@@ -16,88 +16,81 @@ body, html {
     max-width: 700px;
     padding: 20px;
     background: #ffffff; /* Crisp white background for clear content presentation */
-    border-radius: 10px; /* Rounded corners for a soft, modern look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadows for depth */
-    border: 1px solid #dcdcdc; /* Light gray border for refined detailing */
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 1px solid #dcdcdc; /* Light grey border for subtle definition */
+    text-align: left; /* Aligns text to the left for body content, ensuring readability */
 }
 
-/* Centered title with larger font size for emphasis */
 #mainTitle {
-    text-align: center; /* Centers the title text */
-    font-size: 24px; /* Larger font size for the title */
-    margin-bottom: 20px; /* Adds spacing below the title */
+    text-align: center; /* Centers the main title text */
+    font-size: 24px; /* Larger font size for the title to draw attention */
+    margin-bottom: 20px; /* Extra space below the title */
 }
 
-/* Logo styling for consistent brand presentation */
 #brandLogo {
     display: block;
-    max-width: 200px; /* Optimized width for visual balance */
-    height: auto; /* Maintains image aspect ratio */
-    margin: 0 auto 20px; /* Centers the logo and adds vertical spacing */
+    max-width: 200px; /* Controlled width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto 20px; /* Center logo and provide spacing */
 }
 
-/* Styling for input fields to enhance readability and usability */
-input[type="text"], input[type="number"] {
-    width: calc(100% - 40px); /* Width adjusted for padding */
+input[type="text"], input[type="number"], button {
+    width: calc(100% - 40px); /* Adjust width for padding */
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 2px solid #ccc; /* Visible border for clear input delineation */
+    border: 2px solid #ccc; /* Enhances visibility and focus */
     background-color: #fff; /* White background for inputs */
     color: #333;
-    font-family: 'Arial', sans-serif; /* Modern, readable sans-serif font for input text */
+    font-family: 'Arial', sans-serif; /* Clear and modern font for inputs */
 }
 
-/* Button styling for interactive elements */
 button {
     background-color: #4a5568; /* Stylish dark blue for a professional look */
     color: #fff;
     padding: 12px 20px;
-    font-size: 16px; /* Readable font size for buttons */
+    font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #2d3748; /* Darker shade for hover effect */
+    background-color: #2d3748; /* Darker shade on hover for interactive feel */
 }
 
 /* Print Styles */
 @media print {
     body, html {
-        background-color: white; /* Ensures a clean background for printing */
+        background-color: white; /* Clean background for printing */
         color: black; /* High contrast for print readability */
         font-size: 16pt; /* Increased font size for printed text */
     }
 
     .container {
         width: 100%; /* Full width for print layout */
-        box-shadow: none; /* Removes shadow for a clean print look */
-        border: none; /* Removes border for printing */
-        text-align: left; /* Aligns body text to the left */
+        box-shadow: none; /* Remove shadow for a clean print look */
+        border: none; /* Remove border for printing */
     }
 
     #mainTitle, #brandLogo {
         display: block; /* Ensures these elements are visible in print */
+        text-align: center; /* Ensure title and logo are centered in print */
     }
 
-    #mainTitle {
-        text-align: center; /* Centers the title specifically */
+    #brandLogo, form, button {
+        display: none; /* Hide elements not needed in print */
     }
 
     #printTitle {
-        display: block; /* Ensures the custom print title is displayed */
-        text-align: center; /* Centers the print title */
-    }
-
-    input, button, form {
-        display: none; /* Hides form elements not needed in print */
+        display: block; /* Show the custom print title */
+        text-align: center; /* Center the print title */
     }
 
     #result {
         display: block;
         visibility: visible;
-        text-align: left; /* Keeps detailed results aligned to the left */
+        text-align: left; /* Keep detailed results aligned to the left */
     }
 }

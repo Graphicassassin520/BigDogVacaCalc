@@ -1,4 +1,4 @@
-/* General and Screen Display Styles */
+/* General Styles */
 body, html {
     height: 100%;
     margin: 0;
@@ -6,82 +6,98 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Georgia', serif; /* Elegant and readable serif font */
-    background-color: #f4f4f9; /* Soft, neutral background color */
-    color: #333; /* Dark gray text for contrast and readability */
+    font-family: 'Georgia', serif; /* Classic and elegant serif font for a luxurious feel */
+    background-color: #f4f4f9; /* Soft, light background for a clean aesthetic */
+    color: #333; /* Dark grey for contrast and readability */
 }
 
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
     padding: 20px;
-    background: #ffffff; /* White background for a clean and professional look */
-    border-radius: 10px; /* Smooth rounded corners for a modern feel */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center; /* Central alignment for a tidy appearance */
-    border: 1px solid #dcdcdc; /* Light gray border for subtle definition */
+    background: #ffffff; /* Crisp white background for clear content presentation */
+    border-radius: 10px; /* Rounded corners for a soft, modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadows for depth */
+    border: 1px solid #dcdcdc; /* Light gray border for refined detailing */
 }
 
+/* Centered title with larger font size for emphasis */
+#mainTitle {
+    text-align: center; /* Centers the title text */
+    font-size: 24px; /* Larger font size for the title */
+    margin-bottom: 20px; /* Adds spacing below the title */
+}
+
+/* Logo styling for consistent brand presentation */
 #brandLogo {
     display: block;
-    max-width: 180px; /* Optimal width for visibility without overpowering the layout */
-    height: auto; /* Keeps the logo's aspect ratio intact */
-    margin: 0 auto 20px; /* Centers the logo and adds vertical space before the form */
+    max-width: 200px; /* Optimized width for visual balance */
+    height: auto; /* Maintains image aspect ratio */
+    margin: 0 auto 20px; /* Centers the logo and adds vertical spacing */
 }
 
-input[type="text"], input[type="number"], button {
-    width: calc(100% - 20px); /* Full width minus padding for a snug fit */
+/* Styling for input fields to enhance readability and usability */
+input[type="text"], input[type="number"] {
+    width: calc(100% - 40px); /* Width adjusted for padding */
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 2px solid #ccc; /* Enhances focus visibility with a slightly thicker border */
-    background-color: #fff; /* Keeps input fields bright to stand out against the text */
+    border: 2px solid #ccc; /* Visible border for clear input delineation */
+    background-color: #fff; /* White background for inputs */
     color: #333;
-    font-family: 'Arial', sans-serif; /* Sans-serif for clean, modern input text */
+    font-family: 'Arial', sans-serif; /* Modern, readable sans-serif font for input text */
 }
 
+/* Button styling for interactive elements */
 button {
-    background-color: #4a5568; /* Dark gray-blue for an elegant, professional button */
-    color: #ffffff;
+    background-color: #4a5568; /* Stylish dark blue for a professional look */
+    color: #fff;
     padding: 12px 20px;
-    font-size: 16px;
+    font-size: 16px; /* Readable font size for buttons */
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #2d3748; /* A darker shade for interactive hover effect */
+    background-color: #2d3748; /* Darker shade for hover effect */
 }
 
 /* Print Styles */
 @media print {
     body, html {
-        background-color: white; /* Ensures a clean, distraction-free background */
-        color: black; /* Maximizes contrast for print */
-        font-family: 'Georgia', serif; /* Consistent with the screen font for uniformity */
-        font-size: 14pt; /* Increases size for print readability */
+        background-color: white; /* Ensures a clean background for printing */
+        color: black; /* High contrast for print readability */
+        font-size: 16pt; /* Increased font size for printed text */
     }
 
     .container {
-        width: 100%; /* Utilizes full page width for a broader print layout */
-        max-width: none; /* Removes constraints to fit all content */
-        box-shadow: none; /* Removes shadows for a clean print look */
-        border: none; /* Eliminates border for printing */
-        text-align: left; /* Aligns text to the left for traditional reading layout */
+        width: 100%; /* Full width for print layout */
+        box-shadow: none; /* Removes shadow for a clean print look */
+        border: none; /* Removes border for printing */
+        text-align: left; /* Aligns body text to the left */
     }
 
-    #brandLogo {
-        display: block; /* Ensures the logo is visible */
-        margin-bottom: 20px; /* Adds space below the logo for separation */
+    #mainTitle, #brandLogo {
+        display: block; /* Ensures these elements are visible in print */
     }
 
-    input, button {
-        display: none; /* Hides interactive elements not needed in print */
+    #mainTitle {
+        text-align: center; /* Centers the title specifically */
+    }
+
+    #printTitle {
+        display: block; /* Ensures the custom print title is displayed */
+        text-align: center; /* Centers the print title */
+    }
+
+    input, button, form {
+        display: none; /* Hides form elements not needed in print */
     }
 
     #result {
-        display: block; /* Ensures result section is visible */
-        visibility: visible; /* Overrides any hidden settings from screen styles */
+        display: block;
+        visibility: visible;
+        text-align: left; /* Keeps detailed results aligned to the left */
     }
 }

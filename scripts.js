@@ -1,7 +1,9 @@
-document.getElementById('calculatorForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from submitting traditionally
-    calculateCosts();
-    updatePrintTitle();
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the form from submitting traditionally
+        calculateCosts();
+        updatePrintTitle();
+    });
 });
 
 function calculateCosts() {
@@ -12,6 +14,8 @@ function calculateCosts() {
     const entertainmentPerDay = parseFloat(document.getElementById('entertainmentPerDay').value) || 0;
     const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100; // Convert percentage to decimal
     const spinnakerPrice = parseFloat(document.getElementById('spinnakerPrice').value) || 0;
+
+    console.log({name, days, costPerNight, foodPerDay, entertainmentPerDay, inflationRate, spinnakerPrice});
 
     let initialYearlyCost = days * (costPerNight + foodPerDay + entertainmentPerDay);
     let cumulativeCost = initialYearlyCost; // Initial year cost for cumulative calculations
@@ -39,6 +43,7 @@ function calculateCosts() {
     }
 
     document.getElementById('result').innerHTML = output;
+    console.log(output); // Log output for debugging
 }
 
 function updatePrintTitle() {

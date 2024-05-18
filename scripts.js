@@ -1,48 +1,48 @@
-function calculateIncome() {
-    const location = document.getElementById("location").value;
-    const season = document.getElementById("season").value;
-    const room_size = document.getElementById("room_size").value;
-    const nights = parseInt(document.getElementById("nights").value);
-    const arp = document.getElementById("arp").value;
+document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the form from submitting traditionally
+    calculateCosts();
+    updatePrintTitle();
+});
 
-    // Basic validation to ensure all selections are made
-    if (!location || !season || !room_size || isNaN(nights) || !arp) {
-        document.getElementById("income_result").innerHTML = "<strong>Please fill in all fields.</strong>";
-        return;
+function calculateCosts() {
+    const name = document.getElementById('name').value.trim() || 'Guest';
+    const days = parseInt(document.getElementById('days').value, 10) || 0;
+    const costPerNight = parseFloat(document.getElementById('costPerNight').value) || 0;
+    const foodPerDay = parseFloat(document.getElementById('foodPerDay').value) || 0;
+    const entertainmentPerDay = parseFloat(document.getElementById('entertainmentPerDay').value) || 0;
+    const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100; // Convert percentage to decimal
+    const spinnakerPrice = parseFloat(document.getElementById('spinnakerPrice').value) || 0;
+
+    let initialYearlyCost = days * (costPerNight + foodPerDay + entertainmentPerDay);
+    let cumulativeCost = initialYearlyCost; // Initial year cost for cumulative calculations
+    let totalProjectedCost = initialYearlyCost; // Total cost projection over 30 years
+
+    let output = `<h2>${name}'s 30-Year Vacation Cost Projection</h2>`;
+    output += `<p>If you vacation ${days} days each year, with daily costs of accommodation $${costPerNight.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}, food $${foodPerDay.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}, and entertainment $${entertainmentPerDay.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}, considering an annual inflation rate of ${(inflationRate * 100).toFixed(1)}%:</p>`;
+    output += `<ul>`;
+
+    for (let year = 1; year <= 30; year++) {
+        initialYearlyCost *= (1 + inflationRate); // Apply inflation rate annually
+        totalProjectedCost += initialYearlyCost; // Accumulate total cost over 30 years
+        if (year % 5 === 0 || year === 30) { // Display results every 5 years and in the 30th year
+            cumulativeCost += initialYearlyCost;
+            output += `<li>Year ${year}: Annual Cost: $${initialYearlyCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}, Monthly Cost: $${(initialYearlyCost / 12).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}, Cumulative Cost: $${cumulativeCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</li>`;
+        }
     }
 
-    // Configuration of rates based on location and season
-    const rates = {
-        ormond_beach: {
-            standard: { studio: 215, "1_bd": 315, "2_bd": 415 },
-            event_week: { studio: 450, "1_bd": 1000, "2_bd": 1100 }
-        },
-        branson: {
-            standard: { studio: 115, "1_bd": 215, "2_bd": 315 },
-            event_week: { studio: 115, "1_bd": 215, "2_bd": 315 } // No change for event week in Branson, defaulting to standard rates
-        }
-    };
+    output += `</ul>`;
+    output += `<p>Total projected cost over 30 years: $${totalProjectedCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>`;
 
-    // Calculate the nightly rate based on the selected options
-    let nightly_rate = rates[location][season][room_size];
-    let effective_nights = nights > 4 ? 5 : nights; // Apply the special calculation rule for more than 4 nights
-    let total_income = nightly_rate * effective_nights;
+    if (spinnakerPrice > 0) {
+        const yearsToPayOff = spinnakerPrice / totalProjectedCost * 30;
+        output += `<p>If you maintain these vacation habits, you will pay off your Spinnaker ownership in approximately ${yearsToPayOff.toFixed(1)} years.</p>`;
+    }
 
-    // Calculating projections for future earnings
-    let projected_days_per_year = (nights > 4 ? 5 * 365 / 7 : nights * 365); // Adjust yearly projection based on number of nights
-    let income_per_year = nightly_rate * projected_days_per_year;
-    let income_10_years = income_per_year * 10;
-    let income_20_years = income_per_year * 20;
+    document.getElementById('result').innerHTML = output;
+}
 
-    // Determine the ARP status text based on user selection
-    let arp_text = arp === "yes" ? "13 Month Advance Priority Reservations" : "12 Month Advance Priority Reservations";
-
-    // Display the results in the HTML
-    document.getElementById("income_result").innerHTML = `
-        <strong>Projected Rental Income: $${total_income.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong><br>
-        Annual Projection: $${income_per_year.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}<br>
-        10 Year Projection: $${income_10_years.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}<br>
-        20 Year Projection: $${income_20_years.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}<br>
-        ${arp_text}
-    `;
+function updatePrintTitle() {
+    const name = document.getElementById('name').value.trim() || 'Guest';
+    document.getElementById('printTitle').textContent = `${name}'s Vacation Plan`; // Dynamically update the print title
+    document.getElementById('printTitle').style.display = 'block'; // Ensure visibility during printing
 }
